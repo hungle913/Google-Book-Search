@@ -14,10 +14,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-app.use(routes)
+app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nprScraper";
+mongoose.connect(MONGODB_URI,{ useNewUrlParser: true, useUnifiedTopology: true });
 
 // Send every other request to the React app
 // Define any API routes before this runs
